@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+
+<services xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/services.xsd">
+    <description>PatanjaliStore Services</description>
+    <vendor></vendor>
+    <version>1.0</version>
+
+    <service name="importPruchaseOrderFromXLS" engine="java" validate="true" auth="true"
+            location="com.patanjali.order.OrderServices" invoke="importPruchaseOrderFromXLS">
+        <description>Creates order entities</description>
+   </service>
+   
+   <service name="importSalesOrderFromXLS" engine="java" validate="true" auth="true" transaction-timeout="2700"
+            location="com.patanjali.order.OrderServices" invoke="importSalesOrderFromXLS">
+        <description>Creates order entities</description>
+<!--         <attribute name="startRow" mode="IN" type="Integer" optional="false"/> -->
+<!-- 		<attribute name="endRow" mode="IN" type="Integer" optional="false" /> -->
+   </service>
+   
+   <!-- <service name="importOpeningBalanceFromXLS" engine="java" validate="true" auth="true"
+            location="com.patanjali.order.OrderServices" invoke="importOpeningBalanceFromXLS">
+        <description>Create quickCreateAcctgTransAndEntries </description>
+   </service> -->
+   
+   <service name="importCustomer" engine="java" validate="true" auth="true"
+            location="com.patanjali.order.MasterDataImportServices" invoke="importCustomer">
+        <description>Import Customer Data</description>
+        <attribute name="startRow" mode="IN" type="Integer" optional="false"/>
+		<attribute name="endRow" mode="IN" type="Integer" optional="false" />
+   </service>
+   
+   <!-- <service name="importVendor" engine="java" validate="true" auth="true"
+            location="com.patanjali.order.MasterDataImportServices" invoke="importVendor">
+        <description>Import Vendor Data</description>
+   </service> -->
+   
+   <service name="importProductDetail" engine="java" auth="true" transaction-timeout="2700"
+            location="com.patanjali.order.MasterDataImportServices" invoke="importProductDetail">
+        <description>Import Product Data</description>
+   </service>
+   
+   <service name="importProductStock" engine="java" auth="true" transaction-timeout="2700"
+            location="com.patanjali.order.MasterDataImportServices" invoke="importProductStock">
+        <description>Import Product Stock Data</description>
+		<attribute name="startRow" mode="IN" type="Integer" optional="false"/>
+		<attribute name="endRow" mode="IN" type="Integer" optional="false" />
+   </service>
+   <service name="importProducts" engine="java" validate="true" auth="true"
+            location="com.patanjali.order.ImportProduct" invoke="importProducts">
+        <description>Import Product Data</description>
+   </service>
+   <service name="importParty" engine="java" validate="true" auth="true"
+            location="com.patanjali.order.ImportParty" invoke="importParty">
+        <description>Import Product Data</description>
+   </service>
+   <service name="importSalesOrder" engine="java" validate="true" auth="true"
+            location="com.patanjali.order.ImportSalesOrder" invoke="importSalesOrder">
+        <description>Import Product Data</description>
+   </service>
+   
+</services>
